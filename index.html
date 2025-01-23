@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azure Tool - Premium Roblox Account Gen</title>
+    <title>Azure Tool - Premium Roblox Account Generator</title>
     <style>
+        /* General Styles */
         * {
             margin: 0;
             padding: 0;
@@ -14,156 +15,242 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #121212;
+            background: linear-gradient(to bottom, #000000, #1a1a1a);
             color: #f0f0f0;
             line-height: 1.6;
-            padding: 0;
-            font-size: 16px;
+            font-size: 14px;
+            overflow-x: hidden;
         }
 
+        /* Header */
         header {
-            background: linear-gradient(135deg, #00FF00, #004D00);
+            background: linear-gradient(135deg, #00ff00, #004d00);
             color: white;
             text-align: center;
-            padding: 60px 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            padding: 100px 20px;
+            border-bottom: 4px solid #00ff00;
+            animation: slideInHeader 1s ease-out;
         }
 
         header h1 {
-            font-size: 4rem;
-            margin-bottom: 10px;
+            font-size: 3.5rem;
             text-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
         }
 
         header p {
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            font-size: 1.2rem;
+            text-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+            margin-top: 10px;
         }
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
+        /* Slide-in animation for header */
+        @keyframes slideInHeader {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
-        .about,
-        .features,
-        .download {
-            margin-bottom: 60px;
+        /* Section */
+        section {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards ease-out;
         }
 
+        section:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        section:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        /* Fade-in and slide-up animation for sections */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Titles */
         .section-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             text-align: center;
-            color: #00FF00;
-            margin-bottom: 30px;
+            color: #00ff00;
+            margin-bottom: 40px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+            text-shadow: 0 0 20px rgba(0, 255, 0, 0.9);
         }
 
+        /* Features */
         .feature-list {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
+            animation: zoomIn 1s ease-in-out;
         }
 
         .feature-item {
-            background: #1a1a1a;
+            background: rgba(26, 26, 26, 0.9);
             border-radius: 15px;
-            padding: 30px;
-            width: 300px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            width: 250px;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
             border: 1px solid #333;
+            box-shadow: 0 8px 20px rgba(0, 255, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
         }
 
         .feature-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 255, 0, 0.8);
-            background: #333;
+            background: rgba(40, 40, 40, 0.9);
+            box-shadow: 0 15px 40px rgba(0, 255, 0, 0.6);
         }
 
         .feature-item h3 {
-            color: #00FF00;
-            font-size: 1.8rem;
+            color: #00ff00;
+            font-size: 1.3rem;
             margin-bottom: 15px;
         }
 
         .feature-item p {
-            font-size: 1rem;
-            color: #aaa;
+            font-size: 0.9rem;
+            color: #ddd;
             margin-bottom: 20px;
         }
 
+        /* Button animations */
         .download-button {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            width: 300px;
-            margin: 30px auto;
+            width: 250px;
+            margin: 20px auto;
             padding: 15px;
-            background: linear-gradient(135deg, #00FF00, #004D00);
+            background: linear-gradient(135deg, #00ff00, #004d00);
             color: white;
-            font-size: 1.5rem;
-            text-align: center;
+            font-size: 1.2rem;
             text-decoration: none;
             border-radius: 50px;
-            box-shadow: 0 6px 20px rgba(0, 255, 0, 0.5);
-            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 25px rgba(0, 255, 0, 0.7);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: bounce 2s infinite;
         }
 
         .download-button:hover {
-            background: linear-gradient(135deg, #004D00, #00FF00);
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 255, 0, 0.7);
+            box-shadow: 0 15px 35px rgba(0, 255, 0, 0.9);
         }
 
-        .help-text {
-            text-align: center;
-            color: #00FF00;
+        .download-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Bounce animation */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Discord Join Button */
+        .discord-button {
+            width: 250px;
+            padding: 15px;
+            background: #7289da;
+            color: white;
             font-size: 1.2rem;
-            margin: 20px 0;
-            text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50px;
+            margin: 30px auto;
+            box-shadow: 0 10px 25px rgba(114, 137, 218, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            animation: pulse 1.5s infinite;
         }
 
+        .discord-button:hover {
+            background: #5a6ebf;
+            box-shadow: 0 15px 30px rgba(114, 137, 218, 0.9);
+        }
+
+        .discord-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Pulse animation for Discord Button */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Footer */
         footer {
             background-color: #1a1a1a;
             color: #aaa;
             text-align: center;
-            padding: 20px;
-            font-size: 1rem;
-            border-top: 2px solid #333;
+            padding: 15px;
+            font-size: 0.9rem;
+            border-top: 3px solid #00ff00;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
         footer a {
-            color: #00FF00;
+            color: #00ff00;
             text-decoration: none;
+            font-size: 0.9rem;
             transition: color 0.3s;
         }
 
         footer a:hover {
-            color: #004D00;
-            text-decoration: underline;
+            color: #004d00;
         }
 
+        .credit {
+            font-size: 0.8rem;
+            color: #ddd;
+            margin-top: 10px;
+        }
+
+        /* Media Queries */
         @media (max-width: 768px) {
-            .feature-list {
-                flex-direction: column;
-                align-items: center;
+            body {
+                font-size: 16px;
             }
 
             .feature-item {
                 width: 80%;
             }
 
-            .download-button {
+            .download-button, .discord-button {
                 width: 80%;
             }
         }
@@ -173,64 +260,53 @@
 <body>
     <header>
         <h1>Azure Tool</h1>
-        <p>Roblox Premium Account Generator</p>
+        <p>Generate Premium Roblox Accounts with Ease</p>
     </header>
     <div class="container">
         <!-- About Section -->
         <section class="about">
             <h2 class="section-title">About the Tool</h2>
-            <p>Say hi to Azure Tool! This powerful software Generates accounts by Password guessing them.</p>
+            <p style="text-align: center;">Welcome to Azure Tool! This advanced software generates Roblox premium accounts effortlessly and securely.</p>
         </section>
+
         <!-- Features Section -->
         <section class="features">
             <h2 class="section-title">Features</h2>
             <div class="feature-list">
                 <div class="feature-item">
+                    <h3>Secure and Private</h3>
+                    <p>Protect your data with top-notch encryption. Your privacy is our priority.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>Professional Design</h3>
+                    <p>Crafted by experts with regular updates to ensure the best user experience.</p>
+                </div>
+                <div class="feature-item">
                     <h3>Credits</h3>
-                    <p>This tool is created by OMFGCommunity. Don't take this tool as yours or resell it, or you will be permanently banned from using the tool.</p>
-                </div>
-                <div class="feature-item">
-                    <h3>Encryption & Privacy</h3>
-                    <p>Encrypt your sensitive data with military-grade encryption in the database and ensure your privacy is protected while using the program. No info is collected.</p>
-                </div>
-                <div class="feature-item">
-                    <h3>Why Choose Us?</h3>
-                    <p>The tool is made by professionals. We try our best to upgrade the tool and fix bugs regularly.</p>
+                    <p>This tool was developed by OMFGCommunity. Please do not attempt to resell or claim it as your own.</p>
                 </div>
             </div>
         </section>
+
         <!-- Download Section -->
         <section class="download">
-            <h2 class="section-title">Free Trial For 2 Months</h2>
-            <div class="feature-list">
-                <!-- BAT Download -->
-                <div class="feature-item">
-                    <h3>BAT File</h3>
-                    <a href="https://github.com/AzureTools-hub/Download/releases/download/Download/AzureV2.Trial.bat" class="download-button">Download BAT File</a>
-                </div>
-                <!-- EXE Download -->
-                <div class="feature-item">
-                    <h3>EXE File</h3>
-                    <a href="https://github.com/AzureTools-hub/Download/releases/download/Download/AzureV2.Trial.exe" class="download-button">Download EXE File</a>
-                </div>
-                <!-- CMD Download -->
-                <div class="feature-item">
-                    <h3>CMD File</h3>
-                    <a href="https://github.com/AzureTools-hub/Download/releases/download/Download/AzureV2.Trial.cmd" class="download-button">Download CMD File</a>
-                </div>
-            </div>
-            <!-- Help Joining Discord Section -->
-            <div style="text-align: center; margin-top: 40px;">
-                <p class="help-text">If you need help joining the Discord server, click the button below:</p>
-                <a href="https://discord.gg/BuAkA93j9X" class="download-button">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord Icon" style="width: 24px; height: 24px;"> 
-                    Join Discord
-                </a>
-            </div>
+            <h2 class="section-title">Free Trial for 2 Months</h2>
+            <a href="https://github.com/AzureTools-hub/Download/releases/download/Download/AzureV2.Trial.bat" class="download-button">Download Azure Tool</a>
+        </section>
+
+        <!-- Discord Join Section -->
+        <section class="discord">
+            <h2 class="section-title">Need Help? Join Our Discord</h2>
+            <a href="https://discord.gg/BuAkA93j9X" class="discord-button">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord Icon"> 
+                Join Discord
+            </a>
         </section>
     </div>
+
     <footer>
-        <p>&copy; 2025 Azure Tool. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p>&copy; 2025 Azure Tool. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p class="credit">Developed by OMFGCommunity</p>
     </footer>
 </body>
 
